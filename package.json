@@ -43,6 +43,11 @@
     ]
   },
   "devDependencies": {
-    "sass": "^1.70.0"
+    "@types/less": "^3.0.6",
+    "css-loader": "^6.10.0",
+    "less": "^4.2.0",
+    "less-loader": "^12.2.0",
+    "sass": "^1.70.0",
+    "style-loader": "^3.3.4"
   }
 }

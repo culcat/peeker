@@ -1,26 +1,23 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
+    "module": "commonjs",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "noEmit": true, // Вы можете изменить этот параметр, чтобы разрешить генерацию выходных файлов
+    "jsx": "react",
+    "baseUrl": "./",
+    "paths": {
+      "*": ["src/*"]
+    }
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.less"], // Убедитесь, что ваши файлы .less включены в сборку
+  "exclude": ["node_modules"]
 }
