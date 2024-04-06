@@ -1,23 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "commonjs",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true, // Вы можете изменить этот параметр, чтобы разрешить генерацию выходных файлов
+    "target": "es6",
+    "module": "esnext",
     "jsx": "react",
-    "baseUrl": "./",
+    "strict": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
+    "baseUrl": ".",
     "paths": {
-      "*": ["src/*"]
+      "@mui/material": ["node_modules/@mui/material"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.less"], // Убедитесь, что ваши файлы .less включены в сборку
+  "include": ["./src/**/*","env.d.ts"],
   "exclude": ["node_modules"]
 }

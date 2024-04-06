@@ -1,0 +1,52 @@
+.box {
+    height: 60px;
+    width: 275px;
+}
+
+.box .shops {
+    height: 60px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 277px;
+}
+
+.box .overlap-group {
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #cabaff;
+    border-radius: 10px;
+    height: 60px;
+    position: relative;
+    width: 275px;
+}
+
+.box .expand-left-light {
+    height: 24px !important;
+    left: 240px !important;
+    position: absolute !important;
+    top: 17px !important;
+    width: 24px !important;
+}
+
+.box .text-wrapper {
+    color: #9e9c9f;
+    font-family: "Gilroy-Semibold", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    height: 11px;
+    left: 48px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 24px;
+    white-space: nowrap;
+}
+
+.box .iconly-light {
+    height: 24px !important;
+    left: 14px !important;
+    position: absolute !important;
+    top: 17px !important;
+    width: 24px !important;
+}

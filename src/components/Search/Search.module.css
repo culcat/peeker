@@ -1,0 +1,16 @@
+.box{
+    height: 60px;
+    width: 275px;
+}
+
+.box .SEARCH{
+    height: 60px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 277px;
+}
+
+.box .overlap-group{
+    
+}

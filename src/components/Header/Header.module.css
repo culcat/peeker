@@ -1,0 +1,113 @@
+.Header {
+    height: 32px;
+    position: relative;
+    width: 1160px;
+}
+
+.Header .header {
+    background-color: transparent;
+    height: 32px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 1162px;
+}
+
+.Header .text-wrapper {
+    color: #2a2f33;
+    font-family: "Despair Display-Bold", Helvetica;
+    font-size: 24px;
+    font-weight: 700;
+    height: 17px;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 8px;
+    white-space: nowrap;
+}
+
+.Header .place {
+    height: 20px;
+    left: 922px;
+    position: absolute;
+    top: 6px;
+    width: 242px;
+}
+
+.Header .line {
+    height: 1px;
+    left: 114px;
+    object-fit: cover;
+    position: absolute;
+    top: 19px;
+    width: 124px;
+}
+
+.Header .div {
+    color: #2a2f33;
+    font-family: "Gilroy-Semibold", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    height: 11px;
+    left: 113px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 4px;
+    white-space: nowrap;
+}
+
+.Header .text-wrapper-2 {
+    color: #2a2f33;
+    font-family: "Gilroy-Semibold", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    height: 11px;
+    left: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 5px;
+    white-space: nowrap;
+}
+
+.Header .location {
+    height: 20px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 17px;
+}
+
+.Header .frame {
+    align-items: center;
+    background-color: #cabaff;
+    border-radius: 50px;
+    display: flex;
+    gap: 10px;
+    height: 32px;
+    justify-content: center;
+    left: 194px;
+    overflow: hidden;
+    padding: 12px 17px;
+    position: absolute;
+    top: 0;
+    width: 131px;
+}
+
+.Header .text-wrapper-3 {
+    color: #2a2f33;
+    font-family: "Gilroy-Semibold", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-bottom: -0.5px;
+    margin-left: -5.5px;
+    margin-right: -5.5px;
+    margin-top: -2.5px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}

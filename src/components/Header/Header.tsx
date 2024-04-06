@@ -1,39 +1,21 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Header.css';
+import React from "react";
+import classes from './Header.module.css'
 
-interface HeaderProps {
-    // дополнительные props, если нужны
-}
-
-const Header: React.FC<HeaderProps> = () => {
-    const [searchQuery, setSearchQuery] = useState('');
-
-    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchQuery(e.target.value);
-    };
-
+export const Header = (): JSX.Element => {
     return (
-        <header className="header">
-            <div className="container">
-                <Link to="/" className="header-logo">
-                    PEEKER.ME
-                </Link>
-                <div className="header-search">
-                    <input
-                        type="text"
-                        placeholder="Введите название товара"
-                        value={searchQuery}
-                        onChange={handleSearch}
-                    />
+        <div className={classes.Header}>
+            <header className={classes.header}>
+                <div className={classes["text-wrapper"]}>PEEKER.ME</div>
+                <div className={classes.place}>
+                    <img className={classes.line} alt="Line" src="line-2.svg" />
+                    <div className={classes.div}>Ростов-на-Дону</div>
+                    <div className={classes["text-wrapper-2"]}>Мой город:</div>
+                    <img className={classes.location} alt="Location" src="location.svg" />
                 </div>
-                <nav className="header-nav">
-                    <Link to="/about">О нас</Link>
-                    <Link to="/contacts">Контакты</Link>
-                </nav>
-            </div>
-        </header>
+                <div className={classes.frame}>
+                    <div className={classes["text-wrapper-3"]}>ИИ-ассистент</div>
+                </div>
+            </header>
+        </div>
     );
 };
-
-export default Header;
