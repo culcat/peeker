@@ -1,16 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 
-import * as classes from "./style.module.css";
+import classes from "./WhereSearch.module.css";
 
 export const WhereSearch = (): JSX.Element => {
+    const [marketplaces, setMarketplaces] = useState()
     return (
         <div className={classes.box}>
             <div className={classes.shops}>
-                <div className={classes["overlap-group"]}>
+                <select className={classes["overlap-group"]}>
+                    <option  > где ищем?</option>
 
-                    <div className={classes["text-wrapper"]}>где ищем?</div>
 
-                </div>
+                </select>
             </div>
         </div>
     );

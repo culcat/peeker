@@ -1,14 +1,14 @@
 import React from "react";
 import classes from "./Search.module.css";
 
-export const Box = (): JSX.Element => {
+export const Search = (): JSX.Element => {
     return (
         <div className={classes.box}>
-            <div className={classes.SEARCH}>
-                <div className={classes["overlap-group"]}>
-                    <div className={classes["text-wrapper"]}>наименование или ссылка</div>
-                </div>
-            </div>
+
+
+                    <input placeholder='наименование или ссылка' className={classes.input} />
+
+
         </div>
     );
 };

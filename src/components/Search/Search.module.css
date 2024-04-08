@@ -1,16 +1,14 @@
-.box{
+.box {
     height: 60px;
     width: 275px;
+    position: relative;
+    display: grid;
+
 }
 
-.box .SEARCH{
-    height: 60px;
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 277px;
+.input{
+    border: 1px solid #cabaff;
+
+    border-radius: 10px;
 }
 
-.box .overlap-group{
-    
-}

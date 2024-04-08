@@ -4,14 +4,24 @@
     "module": "esnext",
     "jsx": "react",
     "strict": true,
+    "esModuleInterop": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "plugins": [{ "name": "typescript-plugin-css-modules" }],
     "baseUrl": ".",
     "paths": {
-      "@mui/material": ["node_modules/@mui/material"]
-    }
+      "@mui/*": ["node_modules/@mui/*"]
+    },
+    "plugins": [
+      { "name": "typescript-plugin-css-modules" }
+    ]
   },
-  "include": ["./src/**/*","env.d.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "./src/**/*",
+    "./env.d.ts",
+    "./src/**/*.svg",
+    "./svg.d.ts" // Include svg.d.ts here
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

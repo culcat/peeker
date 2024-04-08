@@ -1,16 +1,18 @@
 .Header {
     height: 32px;
     position: relative;
-    width: 1160px;
+    width: 100%; /* Изменено на процентное значение */
+    margin: 54px auto 0; /* Добавлено для отступа сверху и центрирования по горизонтали */
+    max-width: 1160px; /* Добавлено для ограничения максимальной ширины */
 }
 
 .Header .header {
     background-color: transparent;
     height: 32px;
+    position: relative;
+    width: 100%; /* Изменено на процентное значение */
     left: 0;
-    position: fixed;
-    top: 0;
-    width: 1162px;
+    text-align: center; /* Добавлено для центрирования текста */
 }
 
 .Header .text-wrapper {
@@ -29,48 +31,48 @@
 
 .Header .place {
     height: 20px;
-    left: 922px;
-    position: absolute;
-    top: 6px;
+    float: right;
+    position: relative;
+    top: 10px;
+
+
     width: 242px;
 }
 
-.Header .line {
-    height: 1px;
-    left: 114px;
-    object-fit: cover;
-    position: absolute;
-    top: 19px;
-    width: 124px;
-}
+
 
 .Header .div {
     color: #2a2f33;
-    font-family: "Gilroy-Semibold", Helvetica;
+    font-family: "Gilroy", Helvetica;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 600;
     height: 11px;
     left: 113px;
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
-    top: 4px;
     white-space: nowrap;
+    text-decoration-line: underline;
+    text-decoration-style: dashed;
+    text-decoration-color: #2a2f33;
 }
-
+.Header .div:hover{
+    color: #8338EC;
+    text-decoration-color: #8338EC;
+}
 .Header .text-wrapper-2 {
     color: #2a2f33;
-    font-family: "Gilroy-Semibold", Helvetica;
+    font-family: "Gilroy", Helvetica;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 600;
     height: 11px;
     left: 24px;
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
-    top: 5px;
     white-space: nowrap;
 }
+
 
 .Header .location {
     height: 20px;
@@ -86,28 +88,25 @@
     border-radius: 50px;
     display: flex;
     gap: 10px;
-    height: 32px;
+    height: auto;
     justify-content: center;
     left: 194px;
     overflow: hidden;
     padding: 12px 17px;
     position: absolute;
     top: 0;
-    width: 131px;
+    width: auto;
 }
 
 .Header .text-wrapper-3 {
     color: #2a2f33;
-    font-family: "Gilroy-Semibold", Helvetica;
+    font-family: "Gilroy", Helvetica;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 600;
     letter-spacing: 0;
     line-height: normal;
-    margin-bottom: -0.5px;
-    margin-left: -5.5px;
-    margin-right: -5.5px;
-    margin-top: -2.5px;
     position: relative;
     white-space: nowrap;
     width: fit-content;
 }
+
