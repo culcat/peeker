@@ -1,17 +1,17 @@
 import React, {useState} from "react";
-
+import {Popup} from '../Popup/Popup'
 import classes from "./WhereSearch.module.css";
 
 export const WhereSearch = (): JSX.Element => {
-    const [marketplaces, setMarketplaces] = useState()
+const [isMenuOpen, setIsMenuOpen] = useState(false)
     return (
         <div className={classes.box}>
             <div className={classes.shops}>
-                <select className={classes["overlap-group"]}>
-                    <option  > где ищем?</option>
-
-
-                </select>
+                <button className={classes["overlap-group"]}
+                onClick={()=>setIsMenuOpen(true)}>
+                     где ищем?
+                </button>
+                {isMenuOpen && <Popup/>}
             </div>
         </div>
     );

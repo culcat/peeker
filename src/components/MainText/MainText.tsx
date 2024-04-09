@@ -1,7 +1,8 @@
 import React from 'react';
 import classes from './MainText.module.css';
 import {WhereSearch} from "../WhereSearch/WhereSearch";
-import {Search} from "../Search/Search"; // Подключаем файл стилей
+import {Search} from "../Search/Search";
+import {MoneySort} from "../MoneySort/MoneySort"; // Подключаем файл стилей
 
 export default function MainText() {
     return(
@@ -20,7 +21,9 @@ export default function MainText() {
             <br/>
             <div className={classes.SearchBlock}>
     <Search/>
-        <WhereSearch/></div>
+        <WhereSearch/>
+            <MoneySort/>
+            </div>
         </div>
     )
 }
