@@ -2,6 +2,7 @@ import React from "react";
 import classes from "./Popup.module.css";
 
 export const Popup = (): JSX.Element => {
+
     return (
         <>
             <div className={classes.overlay}></div>
