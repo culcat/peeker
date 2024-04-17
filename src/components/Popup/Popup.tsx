@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import classes from "./Popup.module.css";
+import {useGetMarketplaceQuery} from "../../api/marketplaceAPI";
+import {MarketplaceItem} from "../../types/MarketplaceItem";
 
 export const Popup = (): JSX.Element => {
-
+const {data, isLoading,error} = useGetMarketplaceQuery()
+    if (isLoading) return <div>Loading...</div>;
+    if (!data) return <div>No data available</div>
     return (
         <>
             <div className={classes.overlay}></div>
@@ -32,36 +36,17 @@ export const Popup = (): JSX.Element => {
 
             <div className={classes.view}>
                 <div className={classes["text-wrapper-5"]}>ИЛИ</div>
+                {data.map((item)=>(
                 <div className={classes.ym}>
                     <input
                         className={classes["checkboxes-instance"]}
 
                         type="checkbox"
                     />
-                    <img className={classes["yandex-market"]} alt="Yandex market" src="yandex-market-1.svg" />
+                    <img className={classes["yandex-market"]} alt="Yandex market" src={item.photo} />
                 </div>
-                <div className={classes.megamarket}>
-                    <input
-                        className={classes["checkboxes-instance"]}
-                        type="checkbox"
-                    />
-                    <img className={classes["logo-mega-desktop"]} alt="megamarket" src="logo-mega-desktop-1d57cb-1.svg" />
-                </div>
-                <div className={classes.ozon}>
-                    <input
-                        className={classes["checkboxes-instance"]}
 
-                        type="checkbox"
-                    />
-                    <img className={classes["ozon-logo-RGB-blue"]} alt="Ozon" src="ozon-logo-RGB-blue-1.svg" />
-                </div>
-                <div className={classes.wb}>
-                    <input
-                        className={classes["checkboxes-instance"]}
-                        type="checkbox"
-                    />
-                    <img className={classes["frame"]} alt="WB" src="frame.svg" />
-                </div>
+                    ))}
             </div>
             <button className={classes.find}>
                 <div className={classes["text-wrapper-6"]}>Подтвердить</div>
