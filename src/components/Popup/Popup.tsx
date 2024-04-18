@@ -5,16 +5,35 @@ import {MarketplaceItem} from "../../types/MarketplaceItem";
 
 export const Popup = (): JSX.Element => {
 const {data, isLoading,error} = useGetMarketplaceQuery()
-    if (isLoading) return <div>Loading...</div>;
-    if (!data) return <div>No data available</div>
+    if (isLoading) return <div>
+        <div className={classes.overlay}></div>
+        <div className={classes["popup-container"]}>
+            <div className={classes.marketplaces}>
+                <div className={classes.title}>
+                    <div className={classes["text-wrapper-2"]}>Loading...</div>
+                </div>
+                </div>
+        </div>
+            </div>
+            ;
+            if (!data) return <div>
+                <div className={classes.overlay}></div>
+                <div className={classes["popup-container"]}>
+                    <div className={classes.marketplaces}>
+                        <div className={classes.title}>
+                            <div className={classes["text-wrapper-2"]}>No data</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
     return (
         <>
             <div className={classes.overlay}></div>
             <div className={classes["popup-container"]}>
-        <div className={classes.marketplaces}>
-            <div className={classes.title}>
-                <div className={classes["text-wrapper-2"]}>ГДЕ ИСКАТЬ?</div>
-            </div>
+                <div className={classes.marketplaces}>
+                    <div className={classes.title}>
+                        <div className={classes["text-wrapper-2"]}>ГДЕ ИСКАТЬ?</div>
+                    </div>
             <p className={classes["text-wrapper"]}>
                 По умолчанию сравнение производится по всем маркетплейсам, но вы можете ограничить круг поиска
             </p>
