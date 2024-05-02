@@ -14,7 +14,7 @@
     font-weight: 600;
     line-height: normal;
     text-align: center;
-    margin: 0; /* Убираем внешние отступы */
+    margin: 30px;
 }
 
 .title {
@@ -25,6 +25,11 @@
 .SEARCH {
     margin-bottom: 20px; /* Добавляем отступ снизу */
 }
+.all{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
 
 .overlap-group {
     background-color: #ffffff;
@@ -32,7 +37,15 @@
     border-radius: 10px;
     padding: 10px; /* Добавляем отступы */
     margin-bottom: 20px; /* Добавляем отступ снизу */
+    margin-left: 100px;
+    margin-right: 100px;
+    font-family: "Gilroy", Helvetica;
+    font-size: 16px;
+    font-weight: 600;
+    color: #9e9c9f;
     width: 100%;
+    height: 60px;
+    width: 689px;
 }
 
 .text-wrapper-3 {
@@ -42,19 +55,27 @@
     font-weight: 600;
     white-space: nowrap;
 }
-.all{
-    display: flex;
+.SEARCH{
+  display: grid;
+  place-items: center;
 }
-.all,
 .ym,
 .megamarket,
 .ozon,
 .wb,
 .frame,
-.view,
-.find {
+.view
+{
     margin-bottom: 20px; /* Добавляем отступ снизу */
+    display: flex;
+    flex-flow: row wrap;
+    row-gap: 41px;
+    column-gap: 221px;
+    align-items: center;
+    justify-content: center;
 }
+
+
 .text-wrapper-2{
     font-family: "Despair Display", sans-serif;
     font-size: 32px;
@@ -67,13 +88,29 @@
     font-size: 20px;
     font-weight: 600;
 }
+.text-wrapper-5{
+    color: #9e9c9f;
+    text-align: center;
+}
 
-.checkboxes-instance,
 .yandex-market,
-.logo-mega-desktop,
-.ozon-logo-RGB-blue,
+
 .frame {
-    vertical-align: middle; /* Выравниваем элементы по вертикали */
+
+    width: 122px;
+    height: 22px;
+}
+.checkboxes-instance{
+    width: 24px;
+    height: 24px;
+    margin-right: 20px;
+}
+.close-button{
+    color: #9e9c9f;
+    /*float: right;*/
+    font-family: "Gilroy", Helvetica;
+
+
 }
 
 .find {
@@ -94,9 +131,9 @@
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000; /* Установите высокий индекс для отображения поверх остального контента */
+    z-index: 1000;
+    max-width: 90%; /* Максимальная ширина для адаптации */
 }
-
 .overlay {
     position: fixed;
     top: 0;

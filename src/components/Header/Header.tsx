@@ -7,9 +7,10 @@ export const Header = (): JSX.Element => {
             <header className={classes.header}>
                 <div className={classes["text-wrapper"]}>PEEKER.ME</div>
                 <div className={classes.place}>
-                    <div className={classes.div}>Ростов-на-Дону</div>
+                    <img className={classes.location} alt="Location" src={location}/>
                     <div className={classes["text-wrapper-2"]}>Мой город:</div>
-                    <img className={classes.location} alt="Location" src={location} />
+                    <div className={classes.div}>Ростов-на-Дону</div>
+
                 </div>
                 <div className={classes.frame}>
                     <div className={classes["text-wrapper-3"]}>ИИ-ассистент</div>

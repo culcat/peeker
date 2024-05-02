@@ -18,25 +18,26 @@
 .Header .text-wrapper {
     color: #2a2f33;
     font-family: "Despair Display-Bold", Helvetica;
-    font-size: 24px;
+    font-size: 1.5em;
     font-weight: 700;
     height: 17px;
-    left: 0;
     letter-spacing: 0;
     line-height: normal;
-    position: absolute;
-    top: 8px;
+    position: relative;
+    margin-top: 10px;
     white-space: nowrap;
+    float: left;
 }
 
 .Header .place {
     height: 20px;
     float: right;
     position: relative;
-    top: 10px;
-
-
-    width: 242px;
+    margin-top: 10px;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 
@@ -44,14 +45,9 @@
 .Header .div {
     color: #2a2f33;
     font-family: "Gilroy", Helvetica;
-    font-size: 16px;
+    font-size: 1em;
     font-weight: 600;
-    height: 11px;
-    left: 113px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    white-space: nowrap;
+    height: 0.9em;
     text-decoration-line: underline;
     text-decoration-style: dashed;
     text-decoration-color: #2a2f33;
@@ -63,24 +59,23 @@
 .Header .text-wrapper-2 {
     color: #2a2f33;
     font-family: "Gilroy", Helvetica;
-    font-size: 16px;
+    font-size: 1em;
     font-weight: 600;
-    height: 11px;
-    left: 24px;
+
     letter-spacing: 0;
     line-height: normal;
-    position: absolute;
-    white-space: nowrap;
+    position: relative;
 }
 
+@media screen and (max-width: 768px) {
+    .text-wrapper-2{
+        display: none;
+    }
+}
 
 .Header .location {
     height: 20px;
-    left: 0;
-    position: absolute;
-    top: 0;
     width: 17px;
-    float: right;
 }
 
 .Header .frame {
@@ -111,3 +106,9 @@
     width: fit-content;
 }
 
+@media screen and (max-width: 480px) {
+    .Header .frame{
+        display: none;
+
+    }
+}
