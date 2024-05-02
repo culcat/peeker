@@ -14,12 +14,13 @@ export default function Card({ name }: { name: string }) {
                 <div>
                     {data.map((item:ProductData) => (
                         <div >
-                    <p>{data.name}</p>
-                    <p>Цена: {data.price}</p>
-                    <p>Маркетплейс: {data.market}</p>
-                    <p>Ссылка: {data.url}</p>
-                    <p>Гео: {data.geo}</p>
-                    <p>Время отгрузки: {data.time_ship}</p></div>))}
+                            <img src={item.photo} alt=""/>
+                            <p>{item.name}</p>
+                            <p>Цена: {item.price}</p>
+                            <p>Маркетплейс: {item.market}</p>
+                            <p>Ссылка: {item.url}</p>
+                        </div>
+                    ))}
                 </div>
 
             )}

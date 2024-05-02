@@ -13,3 +13,4 @@ export const productApi = createApi({
 });
 
 export const { useGetProductByNameQuery } = productApi;
+export const { reducer: productReducer } = productApi
