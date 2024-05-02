@@ -21,7 +21,7 @@ export const WhereSearch: React.FC<WhereSearchProps> = (): JSX.Element => {
     return (
         <div className={classes.box}>
 
-            <input type='button' value='Где ищем?' className={classes["overlap-group"]} onClick={togglePopup}/>
+            <input type='button' value='где ищем?' className={classes["overlap-group"]} onClick={togglePopup}/>
 
             <Popup isOpen={isPopupOpen} close={closePopup}/>
 

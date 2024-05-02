@@ -8,13 +8,29 @@
 
 .input{
     border: 1px solid #cabaff;
-
     border-radius: 10px;
+
+
+}
+.input::placeholder{
+    padding-left: 2em;
+    padding-top: 5px;
+    background-image: url("../assets/Search.svg");
+    background-repeat: no-repeat;
+    height: 50px;
+    font-family: "Gilroy-Semibold", Helvetica;
+    font-weight: 600;
+    color:#9E9C9F;
+    text-size: 16px;
+
+}
+.input:focus{
+    background-image: url("");
 }
 
 @media screen and (max-width: 768px) {
     .box {
-        height: 60px;
+        height: 2.6em;
         width: 100%;
 
     }
