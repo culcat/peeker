@@ -5,24 +5,22 @@
     display: grid;
 }
 
-.box .shops {
+.shops {
     height: 60px;
     position: relative;
     width: 277px;
 }
 
-.box .overlap-group {
+.overlap-group {
     background-color: #ffffff;
     border: 1px solid #cabaff;
     border-radius: 10px;
-    height: 60px;
-    position: relative;
-    width: 275px;
+
 }
 
 
 
-.box .text-wrapper {
+.text-wrapper {
     color: #9e9c9f;
     font-family: "Gilroy-Semibold", Helvetica;
     font-size: 16px;
@@ -35,3 +33,9 @@
 }
 
 
+@media screen and (max-width: 768px) {
+  .box {
+        width: 100%;
+
+    }
+}

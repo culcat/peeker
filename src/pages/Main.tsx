@@ -23,6 +23,7 @@ export default function Main() {
                 <MoneySort/>
 
             </div>
+            <br/>
             <div className='Main'>
             <Banners/></div>
         </>

@@ -35,17 +35,17 @@
     background-color: #ffffff;
     border: 1px solid #cabaff;
     border-radius: 10px;
-    padding: 10px; /* Добавляем отступы */
-    margin-bottom: 20px; /* Добавляем отступ снизу */
-    margin-left: 100px;
-    margin-right: 100px;
+    padding: 0.7em;
+    margin-bottom: 1.3em;
+    margin-left: 10%;
+    margin-right: 10%;
     font-family: "Gilroy", Helvetica;
     font-size: 16px;
     font-weight: 600;
     color: #9e9c9f;
     width: 100%;
     height: 60px;
-    width: 689px;
+    width: 100%;
 }
 
 .text-wrapper-3 {
@@ -66,11 +66,11 @@
 .frame,
 .view
 {
-    margin-bottom: 20px; /* Добавляем отступ снизу */
+    margin-bottom: 1.2em; /* Добавляем отступ снизу */
     display: flex;
     flex-flow: row wrap;
-    row-gap: 41px;
-    column-gap: 221px;
+    row-gap: 3em;
+    column-gap: 15em;
     align-items: center;
     justify-content: center;
 }
@@ -78,14 +78,14 @@
 
 .text-wrapper-2{
     font-family: "Despair Display", sans-serif;
-    font-size: 32px;
+    font-size: 2em;
     font-weight: 600;
 }
 .text-wrapper-4,
 .text-wrapper-5,
 .text-wrapper-6 {
     font-family: "Gilroy", Helvetica;
-    font-size: 20px;
+    font-size: 1.5em;
     font-weight: 600;
 }
 .text-wrapper-5{
@@ -100,6 +100,7 @@
     width: 122px;
     height: 22px;
 }
+
 .checkboxes-instance{
     width: 24px;
     height: 24px;
@@ -107,7 +108,6 @@
 }
 .close-button{
     color: #9e9c9f;
-    /*float: right;*/
     font-family: "Gilroy", Helvetica;
 
 
@@ -133,6 +133,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     max-width: 90%; /* Максимальная ширина для адаптации */
+    max-height: 90%;
 }
 .overlay {
     position: fixed;
@@ -142,4 +143,14 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.25); /* Черный полупрозрачный фон */
     z-index: 999; /* Больше чем у самого попапа, чтобы закрывать всю область */
+}
+
+@media screen and(max-width: 768px ) {
+    .yandex-market,
+
+    .frame {
+
+        width: 24px;
+        height: 24px;
+    }
 }

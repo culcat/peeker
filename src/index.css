@@ -1,7 +1,12 @@
 .Main {
     position: relative;
-  display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
-column-gap: 20px;
+    column-gap: 20px;
+    flex-flow: row wrap;
+    row-gap: 16px;
+}
+.control-arrow{
+    display: none;
 }

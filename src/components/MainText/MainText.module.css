@@ -1,8 +1,7 @@
 .Main {
     position: relative;
-    width: 100%;
+    width: 80%;
     margin: 3em auto;
-    max-width: 1160px;
     display: grid;
     place-items: center;
     text-align: center; /* Align text horizontally */
@@ -23,19 +22,18 @@
     padding: 10px 20px; /* Adjust padding as needed */
 }
 
-.SearchBlock {
-    display: flex;
-    flex-direction:row;
-    gap: 20px;
-}
 @media screen and (min-width: 768px) {
     .Text, .Textsecond {
         font-size: 40px; /* Desktop font size */
     }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (max-width: 768px) {
     .Text,.Textsecond{
         display: none;
     }
+    .Main{
+        margin: 0 0 0 0 ;
+    }
 }
+
