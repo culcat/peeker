@@ -1,25 +1,16 @@
 /* Card.module.css */
 .container {
-    margin: 0 auto;
     width: 80%;
     max-width: 1176px;
     position: relative; /* Добавляем позиционирование */
+
 }
 
-.sliderContainer {
-    overflow: hidden; /* Добавляем overflow для скрытия выхода за границы */
-}
+/*.sliderContainer {*/
+/*    overflow: hidden; !* Добавляем overflow для скрытия выхода за границы *!*/
+/*}*/
 
-.arrowsContainer {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding: 0 20px;
-    box-sizing: border-box;
-}
+
 
 .arrowLeft,
 .arrowRight {
@@ -35,14 +26,14 @@
     background-color: #fff;
     border-radius: 0.7em;
     height: fit-content;
-    min-height: 535px;
+    min-height: 35em;
     text-align: left;
     display: flex;
     flex-direction: column;
-    min-width: 260px;
-    margin-left: 1px;
+    min-width: 25%;
+
     position: relative;
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
 }
 
 .card-content {
@@ -83,6 +74,7 @@
 }
 .mainPhoto{
     margin-left: 34px;
+    width: 80%;
 }
 .card button:hover {
     background-color: #CABAFF;
@@ -101,11 +93,12 @@
 .market p {
     margin-left: 5px;
     margin-top: 0;
+
 }
 
 
 .sliderContainer {
-    overflow: hidden; /* Добавляем overflow для скрытия выхода за границы */
+    /*overflow: hidden; !* Добавляем overflow для скрытия выхода за границы *!*/
 }
 
 .arrowsContainer {
@@ -129,4 +122,25 @@
     transform: rotate(180deg); /* Поворачиваем левую стрелку */
 }.arrowLeft {
      transform: rotate(360deg); /* Поворачиваем левую стрелку */
+ }
+
+ @media screen and (max-width: 768px) {
+     .card {
+         min-height: 25em;
+     }
+     .arrowsContainer{
+         display: none;
+     }
+     .market p {
+         font-size: 10px;
+         font-weight: 600;
+     }
+     .card p {
+         font-size: 12px;
+         font-weight: 700;
+     }
+     .card button {
+         font-size: 12px;
+         font-weight: 800;
+     }
  }

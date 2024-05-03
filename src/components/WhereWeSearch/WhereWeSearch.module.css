@@ -1,3 +1,11 @@
+
+.container {
+    margin: 0 auto;
+    width: 90%;
+    max-width: 1176px;
+    position: relative; /* Добавляем позиционирование */
+
+}
 .Text{
     font-family: "Despair Display", sans-serif;
     font-size: 2em;
@@ -21,6 +29,10 @@
     .Text{
         font-size: 1.5em;
         line-height: 28px;
+
+    }
+    .container img{
+        height: 50px;
     }
 
 }

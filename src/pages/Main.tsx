@@ -7,6 +7,7 @@ import {Search} from "../components/Search/Search";
 import {MoneySort} from "../components/MoneySort/MoneySort";
 import Banners from "../components/Banners/Banners";
 import PopularNow from "../components/PopularNow/PopularNow";
+import WhereWeSearch from "../components/WhereWeSearch/WhereWeSearch";
 
 export default function Main() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,6 +30,8 @@ export default function Main() {
             <Banners/></div>
             <br/>
             <PopularNow/>
+            <br/>
+            <WhereWeSearch/>
         </>
     )
 }
