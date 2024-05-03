@@ -11,6 +11,5 @@ export const marketplaceApi = createApi({
     }),
 });
 
-// Экспорт хуков и редьюсера для использования в компонентах
 export const { useGetMarketplaceQuery } = marketplaceApi;
 export const { reducer: marketplaceReducer } = marketplaceApi;

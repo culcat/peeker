@@ -3,6 +3,8 @@ import { setupListeners } from '@reduxjs/toolkit/query/react';
 import { marketplaceApi } from "../api/marketplaceAPI";
 import { productApi } from "../api/popularAPI";
 
+
+
 export const store = configureStore({
     reducer: {
         [marketplaceApi.reducerPath]: marketplaceApi.reducer,

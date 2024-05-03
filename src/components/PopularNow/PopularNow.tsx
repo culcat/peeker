@@ -4,8 +4,8 @@ import Card from "../Card/Card";
 export default function PopularNow() {
 
     return (
-        <div >
-            <h1 className={clases.Text}>ПОПУЛЯРНЫЕ ТОВАРЫ</h1>
+        <div className={clases.PopularNow} >
+            <h1 className={clases.Text}>ПОПУЛЯРНЫЕ СЕЙЧАС</h1>
             <Card name="Iphone 11"/>
 
         </div>
