@@ -3,7 +3,32 @@
     margin: 0 auto;
     width: 80%;
     max-width: 1176px;
+    position: relative; /* Добавляем позиционирование */
+}
 
+.sliderContainer {
+    overflow: hidden; /* Добавляем overflow для скрытия выхода за границы */
+}
+
+.arrowsContainer {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.arrowLeft,
+.arrowRight {
+    width: 40px; /* Задаем ширину стрелочек */
+    cursor: pointer;
+}
+
+.arrowLeft {
+    transform: rotate(180deg); /* Поворачиваем левую стрелку */
 }
 
 .card {
@@ -12,17 +37,18 @@
     height: fit-content;
     min-height: 535px;
     text-align: left;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    max-width: 226px;
-    /*margin-left: 1px;*/
+    min-width: 260px;
+    margin-left: 1px;
     position: relative;
     margin-bottom: 20px;
-
 }
 
-
+.card-content {
+    padding: 0 17px; /* Отступы по бокам */
+    flex-grow: 1; /* Занимать все доступное пространство внутри .card */
+}
 
 .card p {
     margin-bottom: 8px;
@@ -32,6 +58,8 @@
     line-height: 24px;
     color: #2A2F33;
     text-align: left;
+    max-width: 80%;
+    margin-left: 17px;
 }
 
 .card button {
@@ -53,8 +81,52 @@
     font-weight: 800;
     line-height: 24px;
 }
-
+.mainPhoto{
+    margin-left: 34px;
+}
 .card button:hover {
     background-color: #CABAFF;
 }
 
+.market {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    flex-wrap: nowrap;
+    margin-left: 17px;
+}
+
+
+.market p {
+    margin-left: 5px;
+    margin-top: 0;
+}
+
+
+.sliderContainer {
+    overflow: hidden; /* Добавляем overflow для скрытия выхода за границы */
+}
+
+.arrowsContainer {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.arrowLeft,
+.arrowRight {
+    width: 40px; /* Задаем ширину стрелочек */
+    cursor: pointer;
+}
+
+.arrowRight {
+    transform: rotate(180deg); /* Поворачиваем левую стрелку */
+}.arrowLeft {
+     transform: rotate(360deg); /* Поворачиваем левую стрелку */
+ }
