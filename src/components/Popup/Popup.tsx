@@ -10,6 +10,8 @@ type PopupProps = {
 
 export const Popup: React.FC<PopupProps> = ({ isOpen,close }): JSX.Element => {
     const {data, isLoading, error} = useGetMarketplaceQuery();
+  
+
 
 
     if (isLoading) return (
