@@ -6,7 +6,7 @@ export default function PopularNow() {
     return (
         <div className={clases.PopularNow} >
             <h1 className={clases.Text}>ПОПУЛЯРНО СЕЙЧАС</h1>
-            <Card name="Iphone 11"/>
+            <Card />
 
         </div>
     );

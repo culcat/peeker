@@ -8,9 +8,10 @@ import photo from '../assets/iPhone.png';
 import Clases from './Card.module.css';
 import { useGetMarketplaceQuery } from "../../api/marketplaceAPI";
 import arrow from '../assets/arrow.svg';
-
-export default function Card({ name }: { name: string }) {
-    const { data, error, isLoading } = useGetProductByNameQuery(name);
+import {useGetMainQuery} from "../../api/mainAPI";
+import {MainItem} from "../../types/MainItem";
+export default function Card() {
+    const { data, error, isLoading } = useGetMainQuery();
     const { data: marketplaceData, isLoading: marketplaceIsLoading, error: marketplaceError } = useGetMarketplaceQuery();
 
     const sliderRef = useRef<Slider>(null); // Создаем ссылку на слайдер
@@ -55,10 +56,10 @@ export default function Card({ name }: { name: string }) {
             {data && Array.isArray(data) && marketplaceData && Array.isArray(marketplaceData) && (
                 <>
                     <div className={Clases.sliderContainer}>
-                        <Slider {...settings} ref={sliderRef}> {/* Добавляем ссылку на слайдер */}
-                            {data.map((item: ProductData, index: number) => (
+                        <Slider {...settings} ref={sliderRef}>
+                            {data.map((item: MainItem, index: number) => (
                                 <div key={index} className={Clases.card}>
-                                    <img className={Clases.mainPhoto} src={photo} alt=""/>
+                                    <img className={Clases.mainPhoto} src={item.picture} alt=""/>
                                     {marketplaceData.map((market: any) => {
                                         if (item.market === market.id) {
                                             return (
