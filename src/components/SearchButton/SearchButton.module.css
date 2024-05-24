@@ -1,0 +1,18 @@
+.box {
+    height: 60px;
+    width: 275px;
+    position: relative;
+    display: grid;
+
+}
+
+.button{
+    text-align: center; 
+    padding: 10px 20px;
+    background-color: #2a2f33;
+    color: #ffffff;
+    border-radius: 10px;
+    font-family: "Gilroy", Helvetica;
+    font-size: 20px;
+    font-weight: 800;
+}

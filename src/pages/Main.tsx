@@ -8,12 +8,20 @@ import {MoneySort} from "../components/MoneySort/MoneySort";
 import Banners from "../components/Banners/Banners";
 import PopularNow from "../components/PopularNow/PopularNow";
 import WhereWeSearch from "../components/WhereWeSearch/WhereWeSearch";
+import SearchButton from "../components/SearchButton/SearchButton";
+import SearchResult from "../components/SearchResult/SearchResult";
 
 export default function Main() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+    const [search, setSearch] = useState("");
+    const [status, setStatus] = useState(false);
     function toggleMenu() {
         setIsMenuOpen(!isMenuOpen);
+    }
+
+    function handleSearch(e) {
+        setSearch(e.target.value);
+        setStatus(true);
     }
     return(
         <>
@@ -23,15 +31,19 @@ export default function Main() {
                 <Search/>
                 <WhereSearch openMenu={() => setIsMenuOpen(true)} isMenuOpen={isMenuOpen}/>
                 <MoneySort/>
+                <SearchButton onClick={handleSearch({target: {value: search}})}/>
 
             </div>
             <br/>
+            {status && <SearchResult search={search}/>}
             <div className='Main'>
             <Banners/></div>
             <br/>
             <PopularNow/>
             <br/>
             <WhereWeSearch/>
+            <br/>
+
         </>
     )
 }
