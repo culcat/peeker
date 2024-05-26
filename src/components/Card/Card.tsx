@@ -1,21 +1,23 @@
-import React, { useState, useRef } from 'react'; // Добавлен useRef
-import { useGetProductByNameQuery } from '../../api/popularAPI';
-import { ProductData } from '../../types/productData';
+import React, { useState, useRef } from 'react';
+import { useGetMarketplaceQuery } from "../../api/marketplaceAPI";
+import { useGetMainQuery } from "../../api/mainAPI";
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import photo from '../assets/iPhone.png';
-import Clases from './Card.module.css';
-import { useGetMarketplaceQuery } from "../../api/marketplaceAPI";
 import arrow from '../assets/arrow.svg';
-import {useGetMainQuery} from "../../api/mainAPI";
-import {MainItem} from "../../types/MainItem";
+import Clases from './Card.module.css';
+import { ApiResponse, MainItem } from "../../types/MainItem";
+
 export default function Card() {
     const { data, error, isLoading } = useGetMainQuery();
+
     const { data: marketplaceData, isLoading: marketplaceIsLoading, error: marketplaceError } = useGetMarketplaceQuery();
 
-    const sliderRef = useRef<Slider>(null); // Создаем ссылку на слайдер
+    console.log('API data:', data);
 
+
+
+    const sliderRef = useRef<Slider>(null);
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const settings = {
@@ -24,7 +26,7 @@ export default function Card() {
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 4,
-        initialSlide: currentSlide, // Устанавливаем initialSlide
+        initialSlide: currentSlide,
         responsive: [
             {
                 breakpoint: 768,
@@ -40,33 +42,35 @@ export default function Card() {
 
     const nextSlide = () => {
         setCurrentSlide(currentSlide + 1);
-        sliderRef.current?.slickNext(); // Пролистываем на следующий слайд
+        sliderRef.current?.slickNext();
     };
 
     const previousSlide = () => {
         setCurrentSlide(currentSlide - 1);
-        sliderRef.current?.slickPrev(); // Пролистываем на предыдущий слайд
+        sliderRef.current?.slickPrev();
     };
 
-    if (isLoading || marketplaceIsLoading) return <div>Загрузка...</div>;
-    if (error || marketplaceError) return <div>Ошибка</div>;
+
+    if (isLoading || error || !data || !data.items || data.items.length === 0) {
+        return <div>{isLoading ? 'Loading...' : error ? 'Error loading data' : 'No items found'}</div>;
+    }
+    const items: MainItem[] = data.items;
 
     return (
         <div className={Clases.container}>
-            {data && Array.isArray(data) && marketplaceData && Array.isArray(marketplaceData) && (
+
                 <>
                     <div className={Clases.sliderContainer}>
                         <Slider {...settings} ref={sliderRef}>
-                            {data.map((item: MainItem, index: number) => (
-                                <div key={index} className={Clases.card}>
+                            {items.map((item: MainItem) => (
+                                <div key={item.item_id} className={Clases.card}>
                                     <img className={Clases.mainPhoto} src={item.picture} alt=""/>
-                                    {marketplaceData.map((market: any) => {
+                                    {marketplaceData && marketplaceData.map((market: any) => {
                                         if (item.market === market.id) {
                                             return (
                                                 <React.Fragment key={market.id}>
                                                     <div className={Clases.market}>
-                                                        <img width='30px' height='20px' src={market.icon}
-                                                             alt={market.name}/>
+                                                        <img width='30px' height='20px' src={market.icon} alt={market.name}/>
                                                         <p>{market.name}</p>
                                                     </div>
                                                 </React.Fragment>
@@ -88,7 +92,8 @@ export default function Card() {
                         <img onClick={nextSlide} src={arrow} className={Clases.arrowRight}/>
                     </div>
                 </>
-            )}
+
         </div>
     );
 }
+

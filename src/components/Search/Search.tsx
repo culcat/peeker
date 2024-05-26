@@ -4,11 +4,8 @@ import classes from "./Search.module.css";
 export const Search = (): JSX.Element => {
     return (
         <div className={classes.box}>
-
-
-                    <input placeholder='наименование или ссылка' className={classes.input} />
-
-
+            <input className={classes.input} placeholder="Поиск" />
+            <button className={classes.button}>ПОИСК</button>
         </div>
     );
 };
