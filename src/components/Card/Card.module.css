@@ -25,12 +25,11 @@
 .card {
     background-color: #fff;
     border-radius: 0.7em;
-    height: fit-content;
-    min-height: 35em;
+    height: 35em;
     text-align: left;
     display: flex;
     flex-direction: column;
-    width: 25%;
+    width: 260px;
 
     position: relative;
     /*margin-bottom: 20px;*/
@@ -107,6 +106,13 @@
     flex-wrap: wrap;
     justify-content: space-around;
     margin-top: 20px;
+}
+@media screen and (max-width: 768px) {
+    .card{
+width: 156px;
+        height: 274px;
+    }
+
 }
 
 .arrowsContainer {
