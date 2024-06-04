@@ -10,85 +10,62 @@ import { useGetMarketplaceQuery } from "../../api/marketplaceAPI";
 import arrow from '../assets/arrow.svg';
 import {useGetMainQuery} from "../../api/mainAPI";
 import {MainItem} from "../../types/MainItem";
+import NOTfound from '../assets/NotFoundLayoutAdaptive.png';
+import search from '../assets/SearchLayoutAdaptive.png';
+interface SearchResultProps {
+    name: string;
+}
+
 export default function SearchResult({ name }: { name: string }) {
     const { data, error, isLoading } = useGetProductByNameQuery(name);
     const { data: marketplaceData, isLoading: marketplaceIsLoading, error: marketplaceError } = useGetMarketplaceQuery();
+    const items: ProductData[] = data?.items || [];
 
     const sliderRef = useRef<Slider>(null); // Создаем ссылку на слайдер
 
-    const [currentSlide, setCurrentSlide] = useState(0);
 
-    const settings = {
-        dots: false,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        initialSlide: currentSlide, // Устанавливаем initialSlide
-        responsive: [
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    infinite: false,
-                    dots: false
-                }
-            }
-        ]
-    };
 
-    const nextSlide = () => {
-        setCurrentSlide(currentSlide + 1);
-        sliderRef.current?.slickNext(); // Пролистываем на следующий слайд
-    };
-
-    const previousSlide = () => {
-        setCurrentSlide(currentSlide - 1);
-        sliderRef.current?.slickPrev(); // Пролистываем на предыдущий слайд
-    };
-
-    if (isLoading || marketplaceIsLoading) return <div>Загрузка...</div>;
-    if (error || marketplaceError) return <div>Ошибка</div>;
+    if (isLoading || marketplaceIsLoading) return <div>
+        <img src={search} alt=""/>
+    </div>;
+    if (error || marketplaceError) return <div>
+        <img src={NOTfound} alt=""/>
+    </div>;
 
     return (
         <div className={Clases.container}>
-            {data && Array.isArray(data) && marketplaceData && Array.isArray(marketplaceData) && (
-                <>
-                    <div className={Clases.sliderContainer}>
-                    <Slider {...settings} ref={sliderRef}>
-        {data.map((item: MainItem, index: number) => (
-                <div key={index} className={Clases.card}>
-            <img className={Clases.mainPhoto} src={item.picture} alt=""/>
-            {marketplaceData.map((market: any) => {
-                    if (item.market === market.id) {
-                        return (
-                            <React.Fragment key={market.id}>
-                            <div className={Clases.market}>
-                            <img width='30px' height='20px' src={market.icon}
-                        alt={market.name}/>
-                        <p>{market.name}</p>
-                        </div>
-                        </React.Fragment>
-                    );
-                    }
-                    return null;
-                })}
-            <p>{item.name}</p>
-            <p>{item.price} ₽</p>
-        <a href={item.url}>
-        <button>Перейти</button>
-        </a>
+
+            <>
+                <div className={Clases.cardConteiner}>
+
+                        {items.map((item: ProductData) => (
+                            <div key={item.item_id} className={Clases.card}>
+                                <img className={Clases.mainPhoto} src={item.picture} alt=""/>
+                                {marketplaceData && marketplaceData.map((market: any) => {
+                                    if (item.market === market.id) {
+                                        return (
+                                            <React.Fragment key={market.id}>
+                                                <div className={Clases.market}>
+                                                    <img width='30px' height='20px' src={market.icon}
+                                                         alt={market.name}/>
+                                                    <p>{market.name}</p>
+                                                </div>
+                                            </React.Fragment>
+                                        );
+                                    }
+                                    return null;
+                                })}
+                                <p>{item.name}</p>
+                                <p>{item.price} ₽</p>
+                                <a href={item.url}>
+                                    <button>Перейти</button>
+                                </a>
+                            </div>
+                        ))}
+                </div>
+
+            </>
+
         </div>
-))}
-    </Slider>
-    </div>
-    <div className={Clases.arrowsContainer}>
-    <img onClick={previousSlide} src={arrow} className={Clases.arrowLeft}/>
-    <img onClick={nextSlide} src={arrow} className={Clases.arrowRight}/>
-    </div>
-    </>
-)}
-    </div>
-);
+    );
 }

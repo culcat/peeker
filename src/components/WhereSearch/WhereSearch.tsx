@@ -2,12 +2,9 @@ import React, { useState } from 'react';
 import { Popup } from '../Popup/Popup';
 import classes from "./WhereSearch.module.css";
 
-type WhereSearchProps = {
-    openMenu: () => void;
-    isMenuOpen: boolean;
-};
 
-export const WhereSearch: React.FC<WhereSearchProps> = (): JSX.Element => {
+
+export const WhereSearch: React.FC = (): JSX.Element => {
     const [isPopupOpen, setIsPopupOpen] = useState(false);
 
     const togglePopup = () => {

@@ -15,16 +15,9 @@ export const Popup: React.FC<PopupProps> = ({ isOpen,close }): JSX.Element => {
 
 
     if (isLoading) return (
-        <div>
-            <div className={classes.overlay}></div>
-            <div className={classes["popup-container"]}>
-                <div className={classes.marketplaces}>
-                    <div className={classes.title}>
-                        <div className={classes["text-wrapper-2"]}>Загрузка...</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <>
+
+        </>
     );
 
     if (error || !data) return (

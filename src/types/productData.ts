@@ -4,8 +4,15 @@ export interface ProductData {
     name: string;
     url: string;
     price: number;
-    photo: string;
+    picture: string;
     time_ship: string | null;
     datetime_ship: string | null;
     geo: string | null;
+}
+
+export interface responseData {
+    items: ProductData[]
+    page_number: number
+    offset: number
+    pages:number
 }

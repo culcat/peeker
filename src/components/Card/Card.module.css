@@ -30,7 +30,7 @@
     text-align: left;
     display: flex;
     flex-direction: column;
-    min-width: 25%;
+    width: 25%;
 
     position: relative;
     /*margin-bottom: 20px;*/
@@ -99,6 +99,14 @@
 
 .sliderContainer {
     /*overflow: hidden; !* Добавляем overflow для скрытия выхода за границы *!*/
+}
+
+.cardConteiner{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
 }
 
 .arrowsContainer {

@@ -1,11 +1,9 @@
-import React, {useState} from "react";
-import {Header} from '../components/Header/Header'
+import React, { useState } from "react";
+import { Header } from '../components/Header/Header';
 import MainText from "../components/MainText/MainText";
-import {WhereSearch} from "../components/WhereSearch/WhereSearch";
-// import classes from "../components/MainText/MainText.module.css";
-
-import {Search} from "../components/Search/Search";
-import {MoneySort} from "../components/MoneySort/MoneySort";
+import { WhereSearch } from "../components/WhereSearch/WhereSearch";
+import { Search } from "../components/Search/Search";
+import { MoneySort } from "../components/MoneySort/MoneySort";
 import Banners from "../components/Banners/Banners";
 import PopularNow from "../components/PopularNow/PopularNow";
 import WhereWeSearch from "../components/WhereWeSearch/WhereWeSearch";
@@ -18,41 +16,50 @@ export default function Main() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [search, setSearch] = useState("");
     const [status, setStatus] = useState(false);
+    const [searchTerm, setSearchTerm] = useState(""); // New state for search term
+
     function toggleMenu() {
         setIsMenuOpen(!isMenuOpen);
     }
 
-
-    function handleSearch(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-        setSearch(e.currentTarget.value);
-        setStatus(true);
+    function handleSearch() {
+        setSearchTerm(search); // Update searchTerm with current search input value
+        setStatus(true); // Set status to true to render SearchResult
     }
-    return(
+
+    return (
         <>
-            <Header/>
-            <MainText/>
+            <Header />
+            <MainText />
             <div className='Main'>
                 <div className={classes.box}>
-
-
-                    <input placeholder='наименование или ссылка' onChange={(event) => setSearch(event.target.value)} className={classes.input}/>
-
-
+                    <input
+                        placeholder='наименование или ссылка'
+                        onChange={(event) => setSearch(event.target.value)}
+                        className={classes.input}
+                    />
                 </div>
-                <WhereSearch openMenu={() => setIsMenuOpen(true)} isMenuOpen={isMenuOpen}/>
-                <MoneySort/>
-                <button className={clases.button} onClick={(event) => handleSearch(event)}>ПОИСК</button>
+                <WhereSearch />
+                <MoneySort />
+                <div className={classes.box}>
+                    <button className={clases.button} onClick={handleSearch}>ПОИСК</button>
+                </div>
             </div>
-            <br/>
-            {status && <SearchResult name={search}/>}
-            <div className='Main'>
-                <Banners/></div>
-            <br/>
-            <PopularNow/>
-            <br/>
-            <WhereWeSearch/>
-            <br/>
+            <br />
 
+            <div className='Main'>
+                {status ? <>
+                    <SearchResult name={searchTerm} /> </>
+                    : (
+                    <>
+                        <Banners />
+                        <br />
+                        <PopularNow />
+                        <br />
+                        <WhereWeSearch />
+                    </>
+                )}
+            </div>
         </>
-    )
+    );
 }
