@@ -1,71 +1,116 @@
-import React, { useState, useRef } from 'react'; // Добавлен useRef
+import React, { useState } from 'react';
 import { useGetProductByNameQuery } from '../../api/popularAPI';
 import { ProductData } from '../../types/productData';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import photo from '../assets/iPhone.png';
 import Clases from '../Card/Card.module.css';
 import { useGetMarketplaceQuery } from "../../api/marketplaceAPI";
 import arrow from '../assets/arrow.svg';
-import {useGetMainQuery} from "../../api/mainAPI";
-import {MainItem} from "../../types/MainItem";
 import NOTfound from '../assets/NotFoundLayoutAdaptive.png';
 import search from '../assets/SearchLayoutAdaptive.png';
+import { useTruncateText } from "../../hooks/useTruncateText";
+import Result from './SearchResult.css';
 interface SearchResultProps {
     name: string;
 }
 
-export default function SearchResult({ name }: { name: string }) {
-    const { data, error, isLoading } = useGetProductByNameQuery(name);
+export default function SearchResult({ name }: SearchResultProps) {
+    const [page, setPage] = useState(1);
+    const { data, error, isLoading } = useGetProductByNameQuery({ name, page });
     const { data: marketplaceData, isLoading: marketplaceIsLoading, error: marketplaceError } = useGetMarketplaceQuery();
     const items: ProductData[] = data?.items || [];
+    const totalPages = data?.pages || 0;
 
-    const sliderRef = useRef<Slider>(null); // Создаем ссылку на слайдер
+    const pageNumbers: number[] = [];
+    for (let i = 1; i <= totalPages; i++)  {
+        pageNumbers.push(i);
+    }
+console.log(pageNumbers);
+    const truncateText = useTruncateText();
 
+    const handlePreviousPage = () => {
+        if (page > 0) {
+            setPage(page - 1);
+        }
+    };
 
+    const handleNextPage = () => {
+        if (page < totalPages - 1) {
+            setPage(page + 1);
+        }
+    };
 
-    if (isLoading || marketplaceIsLoading) return <div>
-        <img src={search} alt=""/>
-    </div>;
-    if (error || marketplaceError) return <div>
-        <img src={NOTfound} alt=""/>
-    </div>;
+    if (isLoading || marketplaceIsLoading) {
+        return (
+            <div>
+                <img src={search} alt="Loading" />
+            </div>
+        );
+    }
+
+    if (error || marketplaceError) {
+        return (
+            <div>
+                <img src={NOTfound} alt="Not Found" />
+            </div>
+        );
+    }
 
     return (
         <div className={Clases.container}>
-
-            <>
-                <div className={Clases.cardConteiner}>
-
-                        {items.map((item: ProductData) => (
-                            <div key={item.item_id} className={Clases.card}>
-                                <img className={Clases.mainPhoto} src={item.picture} alt=""/>
-                                {marketplaceData && marketplaceData.map((market: any) => {
-                                    if (item.market === market.id) {
-                                        return (
-                                            <React.Fragment key={market.id}>
-                                                <div className={Clases.market}>
-                                                    <img width='30px' height='20px' src={market.icon}
-                                                         alt={market.name}/>
-                                                    <p>{market.name}</p>
-                                                </div>
-                                            </React.Fragment>
-                                        );
-                                    }
-                                    return null;
-                                })}
-                                <p>{item.name}</p>
-                                <p>{item.price} ₽</p>
-                                <a href={item.url}>
-                                    <button>Перейти</button>
-                                </a>
-                            </div>
-                        ))}
-                </div>
-
-            </>
-
-        </div>
-    );
+            <div className={Clases.cardConteiner}>
+                {items.map((item: ProductData) => (
+                    <div key={item.item_id} className={Clases.card}>
+                        <img className={Clases.mainPhoto} src={item.picture} alt={item.name}/>
+                        {marketplaceData && marketplaceData.map((market: any) => {
+                            if (item.market === market.id) {
+                                return (
+                                    <React.Fragment key={market.id}>
+                                        <div className={Clases.market}>
+                                            <img width='30px' height='20px' src={market.icon} alt={market.name}/>
+                                            <p>{market.name}</p>
+                                        </div>
+                                    </React.Fragment>
+                                );
+                            }
+                            return null;
+                        })}
+                        <p>{truncateText(item.name, 40)}</p>
+                        <p>{item.rating} ({item.review_count})</p>
+                        <p>{item.price} ₽</p>
+                        <a href={item.url}>
+                            <button>Перейти</button>
+                        </a>
+                    </div>
+                ))}
+            </div>
+            <div className={Result.pagination}>
+                <button
+                    onClick={handlePreviousPage}
+                    disabled={page === 1}
+                    className={Result.paginationbutton}
+                >
+                    &lt;
+                </button>
+                {pageNumbers.map(number => (
+                    <span
+                        key={number}
+                        className={`pagination-number ${number === page ? 'active' : ''}`}
+                        onClick={() => setPage(number)}
+                    >
+                    {number}
+                </span>
+                ))}
+                <button
+                    onClick={handleNextPage}
+                    disabled={page === totalPages}
+                    className={Result.paginationbutton}
+                >
+                    &gt;
+                </button>
+         </div>
+</div>
+)
+    ;
 }

@@ -7,13 +7,14 @@ import 'slick-carousel/slick/slick-theme.css';
 import arrow from '../assets/arrow.svg';
 import Clases from './Card.module.css';
 import { ApiResponse, MainItem } from "../../types/MainItem";
+import {useTruncateText} from "../../hooks/useTruncateText";
 
 export default function Card() {
     const { data, error, isLoading } = useGetMainQuery();
 
     const { data: marketplaceData, isLoading: marketplaceIsLoading, error: marketplaceError } = useGetMarketplaceQuery();
 
-    console.log('API data:', data);
+    const truncateText = useTruncateText();
 
 
 
@@ -78,7 +79,7 @@ export default function Card() {
                                         }
                                         return null;
                                     })}
-                                    <p>{item.name}</p>
+                                    <p>{truncateText(item.name,40)}</p>
                                     <p>{item.price} ₽</p>
                                     <a href={item.url}>
                                         <button>Перейти</button>

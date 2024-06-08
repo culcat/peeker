@@ -1,4 +1,6 @@
 export interface ProductData {
+    rating: number;
+    review_count:number;
     market: number;
     item_id: number;
     name: string;

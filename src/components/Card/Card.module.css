@@ -4,6 +4,7 @@
     max-width: 1176px;
     position: relative; /* Добавляем позиционирование */
 
+
 }
 
 /*.sliderContainer {*/
@@ -25,13 +26,11 @@
 .card {
     background-color: #fff;
     border-radius: 0.7em;
-    height: 35em;
     text-align: left;
     display: flex;
     flex-direction: column;
     width: 260px;
-
-    position: relative;
+    height:535px;
     /*margin-bottom: 20px;*/
 }
 
@@ -60,7 +59,7 @@
     border-radius: 10px;
     cursor: pointer;
     width: 80%;
-    position: absolute;
+    position: relative;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
@@ -73,7 +72,8 @@
 }
 .mainPhoto{
     margin-left: 34px;
-    width: 80%;
+    width:  200px;
+    height: 250px;
 }
 .card button:hover {
     background-color: #CABAFF;
