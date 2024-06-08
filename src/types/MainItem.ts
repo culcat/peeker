@@ -9,8 +9,9 @@ export interface MainItem {
     datetime_ship: string | null;
     geo: string | null;
     rating: number;
-
+    review_count: number;
 }
+
 
 export interface ApiResponse {
     page_number: number;

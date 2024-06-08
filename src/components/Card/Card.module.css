@@ -10,8 +10,9 @@
 /*.sliderContainer {*/
 /*    overflow: hidden; !* Добавляем overflow для скрытия выхода за границы *!*/
 /*}*/
-
-
+.rating::before{
+    content:'★';
+}
 
 .arrowLeft,
 .arrowRight {
@@ -45,7 +46,6 @@
     font-size: 1.2em;
     font-weight: 700;
     line-height: 24px;
-    color: #2A2F33;
     text-align: left;
     max-width: 80%;
     margin-left: 17px;

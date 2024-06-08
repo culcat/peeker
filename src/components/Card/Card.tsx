@@ -8,7 +8,7 @@ import arrow from '../assets/arrow.svg';
 import Clases from './Card.module.css';
 import { ApiResponse, MainItem } from "../../types/MainItem";
 import {useTruncateText} from "../../hooks/useTruncateText";
-
+import star from '../assets/Star.svg';
 export default function Card() {
     const { data, error, isLoading } = useGetMainQuery();
 
@@ -71,7 +71,8 @@ export default function Card() {
                                             return (
                                                 <React.Fragment key={market.id}>
                                                     <div className={Clases.market}>
-                                                        <img width='30px' height='20px' src={market.icon} alt={market.name}/>
+                                                        <img width='30px' height='20px' src={market.icon}
+                                                             alt={market.name}/>
                                                         <p>{market.name}</p>
                                                     </div>
                                                 </React.Fragment>
@@ -79,9 +80,10 @@ export default function Card() {
                                         }
                                         return null;
                                     })}
-                                    <p>{truncateText(item.name,40)}</p>
+                                    <p>{truncateText(item.name, 40)}</p>
+                                    <p className={Clases.rating}> {item.rating} ({item.review_count})</p>
                                     <p>{item.price} ₽</p>
-                                    <a href={item.url}>
+                                    <a target="_blank" rel="noopener noreferrer" href={item.url}>
                                         <button>Перейти</button>
                                     </a>
                                 </div>

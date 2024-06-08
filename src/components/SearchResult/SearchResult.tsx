@@ -79,7 +79,7 @@ console.log(pageNumbers);
                         <p>{truncateText(item.name, 40)}</p>
                         <p>{item.rating} ({item.review_count})</p>
                         <p>{item.price} ₽</p>
-                        <a href={item.url}>
+                        <a target="_blank" rel="noopener noreferrer" href={item.url}>
                             <button>Перейти</button>
                         </a>
                     </div>
