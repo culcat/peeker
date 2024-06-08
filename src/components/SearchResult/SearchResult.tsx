@@ -17,8 +17,11 @@ interface SearchResultProps {
 
 export default function SearchResult({ name }: SearchResultProps) {
     const [page, setPage] = useState(1);
-    const { data, error, isLoading } = useGetProductByNameQuery({ name, page });
+      const [filterBy, setFilterBy] = useState<'asc' | 'desc' | null>(null);
+    const [filterName, setFilterName] = useState<'rating' | 'buy' | 'price' | null>(null);
+    const { data, error, isLoading } = useGetProductByNameQuery({ name, page, filter_by: filterBy, filter_name: filterName });
     const { data: marketplaceData, isLoading: marketplaceIsLoading, error: marketplaceError } = useGetMarketplaceQuery();
+
     const items: ProductData[] = data?.items || [];
     const totalPages = data?.pages || 0;
 
@@ -26,7 +29,6 @@ export default function SearchResult({ name }: SearchResultProps) {
     for (let i = 1; i <= totalPages; i++)  {
         pageNumbers.push(i);
     }
-console.log(pageNumbers);
     const truncateText = useTruncateText();
 
     const handlePreviousPage = () => {
@@ -36,9 +38,13 @@ console.log(pageNumbers);
     };
 
     const handleNextPage = () => {
-        if (page < totalPages - 1) {
+        if (page < totalPages ) {
             setPage(page + 1);
         }
+    };
+    const handleFilterChange = (name: 'rating' | 'buy' | 'price', by: 'asc' | 'desc') => {
+        setFilterName(name);
+        setFilterBy(by);
     };
 
     if (isLoading || marketplaceIsLoading) {
@@ -59,6 +65,16 @@ console.log(pageNumbers);
 
     return (
         <div className={Clases.container}>
+            <div className={Clases.filterbuttonscontainer}>
+            <div className={Clases.filterButtons}>
+                <button onClick={() => handleFilterChange('rating', 'asc')}>По убыванию рейтинга</button>
+                <button onClick={() => handleFilterChange('rating', 'desc')}>По возрастнию рейтинга</button>
+                <button onClick={() => handleFilterChange('buy', 'asc')}>По убыванию кол-ва покупок</button>
+                <button onClick={() => handleFilterChange('buy', 'desc')}>По возврастанию кол-ва покупок</button>
+                <button onClick={() => handleFilterChange('price', 'asc')}>По убыванию цены</button>
+                <button onClick={() => handleFilterChange('price', 'desc')}>По возврастанию цены</button>
+            </div>
+            </div>
             <div className={Clases.cardConteiner}>
                 {items.map((item: ProductData) => (
                     <div key={item.item_id} className={Clases.card}>
@@ -85,7 +101,7 @@ console.log(pageNumbers);
                     </div>
                 ))}
             </div>
-            <div className={Result.pagination}>
+            <div className="pagination">
                 <button
                     onClick={handlePreviousPage}
                     disabled={page === 1}
@@ -104,13 +120,13 @@ console.log(pageNumbers);
                 ))}
                 <button
                     onClick={handleNextPage}
-                    disabled={page === totalPages}
+                    disabled={page === totalPages + 1}
                     className={Result.paginationbutton}
                 >
                     &gt;
                 </button>
-         </div>
-</div>
-)
-    ;
+            </div>
+        </div>
+    )
+        ;
 }

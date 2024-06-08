@@ -7,21 +7,53 @@
 
 .paginationbutton {
     background-color: transparent;
-    border: none;
+    border: 2px solid purple;
+    border-radius: 50%;
     cursor: pointer;
     font-size: 1.2em;
     margin: 0 5px;
+    padding: 10px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }
 
+.paginationbutton:disabled {
+    border-color: grey;
+    cursor: not-allowed;
+}
+
+.paginationbutton:hover:not(:disabled) {
+    background-color: #CABAFF;
+    color: white;
+    transform: scale(1.1);
+}
 .pagination-number {
     cursor: pointer;
     margin: 0 5px;
     font-size: 1.2em;
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    border: 2px solid transparent;
+    font-family: "Despair Display-Bold", Helvetica;
+    font-size: 1.2em;
+    font-weight: 700;
+    line-height: 24px;
+    color: #2A2F33;
+}
+
+.pagination-number:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.1);
 }
 
 .pagination-number.active {
     color: white;
-    background-color: purple;
-    border-radius: 50%;
-    padding: 5px 10px;
+    background-color: #CABAFF;
+    border-color: #CABAFF;
+    transform: scale(1.2);
 }

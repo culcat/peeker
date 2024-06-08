@@ -23,7 +23,7 @@ export default function Card() {
 
     const settings = {
         dots: false,
-        infinite: false,
+        infinite: true,
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 4,
@@ -34,7 +34,7 @@ export default function Card() {
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2,
-                    infinite: false,
+                    infinite: true,
                     dots: false
                 }
             }
