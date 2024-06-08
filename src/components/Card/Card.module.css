@@ -25,14 +25,14 @@
 .card {
     background-color: #fff;
     border-radius: 0.7em;
-    height: 35em;
+    height: 40em;
     text-align: left;
     display: flex;
     flex-direction: column;
     width: 260px;
-
     position: relative;
     /*margin-bottom: 20px;*/
+    padding-top: 20px;
 }
 
 .card-content {
@@ -40,8 +40,8 @@
     flex-grow: 1; /* Занимать все доступное пространство внутри .card */
 }
 .filterbuttonscontainer {
-    overflow-x: auto;
-    white-space: nowrap;
+    overflow-x: hidden;
+    overflow-y: hidden; /* Add this line */
     margin: 20px 0 20px 17px;
     -webkit-overflow-scrolling: touch; /* for smooth scrolling on iOS */
 }
@@ -68,8 +68,13 @@
     white-space: nowrap; /* Add this line */
 }
 
+.filterButtons button:hover {
+    background: #E7DFFF;
+    color: #CABAFF;
+    border-color: #CABAFF;
+}
 
-.filterButtons button:hover{
+.filterButtons button:active {
     background: #E7DFFF;
     color: #CABAFF;
     border-color: #CABAFF;
