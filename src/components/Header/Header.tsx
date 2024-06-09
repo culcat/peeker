@@ -1,11 +1,13 @@
 import React from "react";
 import classes from './Header.module.css'
 import location from "../assets/Location.svg"
+import {useNavigate} from "react-router-dom";
 export const Header = (): JSX.Element => {
+    const navigate = useNavigate();
     return (
         <div className={classes.Header}>
             <header className={classes.header}>
-                <div className={classes["text-wrapper"]}>PEEKER.ME</div>
+                <div onClick={()=> navigate("/")} className={classes["text-wrapper"]}>PEEKER.ME</div>
                 <div className={classes.place}>
                     <img className={classes.location} alt="Location" src={location}/>
                     <div className={classes["text-wrapper-2"]}>Мой город:</div>

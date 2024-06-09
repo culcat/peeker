@@ -10,7 +10,12 @@
 /*    overflow: hidden; !* Добавляем overflow для скрытия выхода за границы *!*/
 /*}*/
 
-
+.rating:before{
+    content: '★';
+}
+.card .rating{
+    color: #9E9C9F;
+}
 
 .arrowLeft,
 .arrowRight {

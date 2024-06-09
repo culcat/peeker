@@ -1,7 +1,8 @@
-.pagination {
+.pagination-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     margin: 20px 0;
 }
 
@@ -26,9 +27,16 @@
     color: white;
     transform: scale(1.1);
 }
+
+.pagination-numbers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .pagination-number {
     cursor: pointer;
-    margin: 0 5px;
+    margin: 5px;
     font-size: 1.2em;
     padding: 10px;
     border-radius: 50%;
@@ -40,9 +48,7 @@
     transition: background-color 0.3s, color 0.3s, transform 0.3s;
     border: 2px solid transparent;
     font-family: "Despair Display-Bold", Helvetica;
-    font-size: 1.2em;
     font-weight: 700;
-    line-height: 24px;
     color: #2A2F33;
 }
 
@@ -56,4 +62,34 @@
     background-color: #CABAFF;
     border-color: #CABAFF;
     transform: scale(1.2);
+}
+
+@media (max-width: 600px) {
+    .paginationbutton {
+        font-size: 1em;
+        padding: 8px;
+        margin: 0 3px;
+    }
+
+    .pagination-number {
+        font-size: 1em;
+        padding: 8px;
+        width: 35px;
+        height: 35px;
+    }
+}
+
+@media (max-width: 400px) {
+    .paginationbutton {
+        font-size: 0.9em;
+        padding: 6px;
+        margin: 0 2px;
+    }
+
+    .pagination-number {
+        font-size: 0.9em;
+        padding: 6px;
+        width: 30px;
+        height: 30px;
+    }
 }

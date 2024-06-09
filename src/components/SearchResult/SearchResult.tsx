@@ -86,13 +86,13 @@ export default function SearchResult({ name }: SearchResultProps) {
             <div className={Clases.cardConteiner}>
                 {items.map((item: ProductData) => (
                     <div key={item.item_id} className={Clases.card}>
-                        <img className={Clases.mainPhoto} src={item.picture} alt={item.name} />
+                        <img className={Clases.mainPhoto} src={item.picture} alt={item.name}/>
                         {marketplaceData && marketplaceData.map((market: any) => {
                             if (item.market === market.id) {
                                 return (
                                     <React.Fragment key={market.id}>
                                         <div className={Clases.market}>
-                                            <img width='30px' height='20px' src={market.icon} alt={market.name} />
+                                            <img width='30px' height='20px' src={market.icon} alt={market.name}/>
                                             <p>{market.name}</p>
                                         </div>
                                     </React.Fragment>
@@ -101,7 +101,7 @@ export default function SearchResult({ name }: SearchResultProps) {
                             return null;
                         })}
                         <p>{truncateText(item.name, 40)}</p>
-                        <p>{item.rating} ({item.review_count})</p>
+                        <p className={Clases.rating}>{item.rating} ({item.review_count})</p>
                         <p>{item.price} ₽</p>
                         <a target="_blank" rel="noopener noreferrer" href={item.url}>
                             <button>Перейти</button>
@@ -109,7 +109,7 @@ export default function SearchResult({ name }: SearchResultProps) {
                     </div>
                 ))}
             </div>
-            <div className="pagination">
+            <div className="pagination-wrapper">
                 <button
                     onClick={handlePreviousPage}
                     disabled={page === 1}
@@ -117,15 +117,17 @@ export default function SearchResult({ name }: SearchResultProps) {
                 >
                     &lt;
                 </button>
-                {pageNumbers.map(number => (
-                    <span
-                        key={number}
-                        className={`pagination-number ${number === page ? 'active' : ''}`}
-                        onClick={() => setPage(number)}
-                    >
-                        {number}
-                    </span>
-                ))}
+                <div className="pagination-numbers">
+                    {pageNumbers.map(number => (
+                        <span
+                            key={number}
+                            className={`pagination-number ${number === page ? 'active' : ''}`}
+                            onClick={() => setPage(number)}
+                        >
+                {number}
+            </span>
+                    ))}
+                </div>
                 <button
                     onClick={handleNextPage}
                     disabled={page === totalPages + 1}
@@ -134,6 +136,7 @@ export default function SearchResult({ name }: SearchResultProps) {
                     &gt;
                 </button>
             </div>
+
         </div>
     );
 }
