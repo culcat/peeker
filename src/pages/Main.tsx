@@ -36,17 +36,14 @@ export default function Main() {
             <br />
 
             <div className='Main'>
-                {status ? <>
-                    <SearchResult name={searchTerm} /> </>
-                    : (
-                    <>
+
                         <Banners />
                         <br />
                         <PopularNow />
                         <br />
                         <WhereWeSearch />
-                    </>
-                )}
+
+
             </div>
         </>
     );

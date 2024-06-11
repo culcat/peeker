@@ -17,6 +17,10 @@
     color: #9E9C9F;
 }
 
+.WarningContainer{
+    padding-top: 79px;
+}
+
 .arrowLeft,
 .arrowRight {
     width: 40px; /* Задаем ширину стрелочек */

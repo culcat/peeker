@@ -7,7 +7,7 @@ export const productApi = createApi({
     endpoints: (builder) => ({
         getProductByName: builder.query<responseData, { name: string, page: number, filter_by: 'asc' | 'desc' | null, filter_name: 'rating' | 'buy' | 'price' | null }>({
             query: ({ name, page, filter_by, filter_name }) => {
-                let query = `/product/?name=${encodeURIComponent(name)}&offset=10&page_number=${page}`;
+                let query = `/product/?name=${encodeURIComponent(name)}&offset=12&page_number=${page}`;
                 if (filter_by && filter_name) {
                     query += `&filter_by=${filter_by}&filter_name=${filter_name}`;
                 }

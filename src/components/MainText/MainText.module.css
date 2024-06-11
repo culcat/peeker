@@ -19,7 +19,10 @@
 .TextThird {
     background: #CABAFF;
     border-radius: 40px;
-    padding: 10px 20px; /* Adjust padding as needed */
+    padding-right: 18px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 7px;
 }
 
 @media screen and (min-width: 768px) {
