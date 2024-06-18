@@ -1,28 +1,31 @@
-import React from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useGetProductByNameQuery } from '../../api/popularAPI';
 import { useGetMarketplaceQuery } from "../../api/marketplaceAPI";
 import { useSwipeable, SwipeableHandlers } from 'react-swipeable';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Clases from '../Card/Card.module.css';
+import arrow from '../assets/arrow.svg';
 import NOTfound from '../assets/NotFoundLayoutAdaptive.png';
 import search from '../assets/SearchLayoutAdaptive.png';
 import { useTruncateText } from "../../hooks/useTruncateText";
 import Result from './SearchResult.css';
+import FilterSlider from "../FilterSlider/FilterSlider";
 
 interface SearchResultProps {
     name?: string;
 }
 
 export default function SearchResult({ name }: SearchResultProps) {
-    const [searchParams, setSearchParams] = useSearchParams();
+    const { name: paramName, page: paramPage } = useParams<{ name: string; page: string }>();
     const navigate = useNavigate();
 
-    const searchName = searchParams.get('q') || '';
-    const page = parseInt(searchParams.get('page') || '1', 10);
-    const filterBy = searchParams.get('filterBy') as 'asc' | 'desc' | null;
-    const filterName = searchParams.get('filterName') as 'rating' | 'buy' | 'price' | null;
+    const [filterBy, setFilterBy] = useState<'asc' | 'desc' | null>(null);
+    const [filterName, setFilterName] = useState<'rating' | 'buy' | 'price' | null>(null);
+
+    const page = parseInt(paramPage||'1', 10) ;
+    const searchName = name || paramName || '';
 
     const { data, error, isLoading } = useGetProductByNameQuery({ name: searchName, page, filter_by: filterBy, filter_name: filterName });
     const { data: marketplaceData, isLoading: marketplaceIsLoading, error: marketplaceError } = useGetMarketplaceQuery();
@@ -34,18 +37,20 @@ export default function SearchResult({ name }: SearchResultProps) {
 
     const handlePreviousPage = () => {
         if (page > 1) {
-            setSearchParams({ q: searchName, page: (page - 1).toString(), filterBy: filterBy || '', filterName: filterName || '' });
+            navigate(`/search/${searchName}/${page - 1}`);
         }
     };
 
     const handleNextPage = () => {
         if (page < totalPages) {
-            setSearchParams({ q: searchName, page: (page + 1).toString(), filterBy: filterBy || '', filterName: filterName || '' });
+            navigate(`/search/${searchName}/${page + 1}`);
         }
     };
 
     const handleFilterChange = (name: 'rating' | 'buy' | 'price', by: 'asc' | 'desc') => {
-        setSearchParams({ q: searchName, page: '1', filterBy: by, filterName: name });
+        setFilterName(name);
+        setFilterBy(by);
+        navigate(`/search/${searchName}/1`);
     };
 
     const swipeHandlers: SwipeableHandlers = useSwipeable({
@@ -72,16 +77,9 @@ export default function SearchResult({ name }: SearchResultProps) {
 
     return (
         <div className={Clases.container}>
-            <div className={Clases.filterbuttonscontainer} {...swipeHandlers}>
-                <div className={Clases.filterButtons}>
-                    <button onClick={() => handleFilterChange('rating', 'asc')}>По убыванию рейтинга</button>
-                    <button onClick={() => handleFilterChange('rating', 'desc')}>По возрастнию рейтинга</button>
-                    <button onClick={() => handleFilterChange('buy', 'asc')}>По убыванию кол-ва покупок</button>
-                    <button onClick={() => handleFilterChange('buy', 'desc')}>По возврастанию кол-ва покупок</button>
-                    <button onClick={() => handleFilterChange('price', 'asc')}>По убыванию цены</button>
-                    <button onClick={() => handleFilterChange('price', 'desc')}>По возврастанию цены</button>
-                </div>
-            </div>
+            <div className={Clases.filterbuttonscontainer}>
+            <FilterSlider onFilterChange={handleFilterChange} />
+        </div>
             <div className={Clases.cardConteiner}>
                 {items.map((item) => (
                     <div key={item.item_id} className={Clases.card}>
@@ -121,7 +119,7 @@ export default function SearchResult({ name }: SearchResultProps) {
                         <span
                             key={number}
                             className={`pagination-number ${number === page ? 'active' : ''}`}
-                            onClick={() => setSearchParams({ q: searchName, page: number.toString(), filterBy: filterBy || '', filterName: filterName || '' })}
+                            onClick={() => navigate(`/search/${searchName}/${number}`)}
                         >
                             {number}
                         </span>

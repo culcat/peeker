@@ -1,7 +1,7 @@
 import React from "react";
 import {Header} from "../components/Header/Header";
 import MainText from "../components/MainText/MainText";
-import {useLocation} from "react-router-dom";
+import {useLocation, useParams} from "react-router-dom";
 import SearchResult from "../components/SearchResult/SearchResult";
 import SearchBar from "../components/SeachBar/SearchBar";
 function useQuery() {
@@ -9,14 +9,14 @@ function useQuery() {
 }
 export default function  SearchPage() {
     const query = useQuery();
-    const searchTerm = query.get("q")|| "";
+    const { name, page } = useParams<{ name: string; page: string }>();
     return (
         <>
             <Header/>
             <MainText/>
             <SearchBar/>
             <div className="Main">
-            <SearchResult name={searchTerm} /></div>
+            <SearchResult name={name} /></div>
         </>
     )
 

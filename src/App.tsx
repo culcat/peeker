@@ -10,7 +10,7 @@ function App() {
     <>
     <Routes>
       <Route path="/"  element={<Main/>} />
-      <Route path='/search' element={<SearchPage/>}/>
+      <Route path='/search/:name/:page' element={<SearchPage/>}/>
     </Routes>
     </>
 
