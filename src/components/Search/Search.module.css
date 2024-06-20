@@ -9,7 +9,10 @@
 .input{
     border: 1px solid #cabaff;
     border-radius: 10px;
-
+    font-family: "Gilroy-Semibold", Helvetica;
+    font-weight: 600;
+    color:#2A2F33;
+    text-size: 16px;
 
 }
 .input::placeholder{

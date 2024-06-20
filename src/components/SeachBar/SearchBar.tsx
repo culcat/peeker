@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import {useNavigate, useLocation, useParams} from 'react-router-dom';
 import classes from '../Search/Search.module.css';
 import { WhereSearch } from '../WhereSearch/WhereSearch';
 import { MoneySort } from '../MoneySort/MoneySort';
@@ -9,10 +9,10 @@ export default function SearchBar() {
     const navigate = useNavigate();
     const location = useLocation();
     const [search, setSearch] = useState('');
-
+    const name  = useParams();
     useEffect(() => {
         const queryParams = new URLSearchParams(location.search);
-        const searchTerm = queryParams.get('q') || '';
+        const searchTerm = name.name|| '';
         setSearch(searchTerm);
     }, [location.search]);
 

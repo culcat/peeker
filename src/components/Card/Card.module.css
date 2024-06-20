@@ -83,12 +83,11 @@
     border-color: #CABAFF;
 }
 
-.filterButtons button:active {
+.filterButtons button:active, .filterButtons .active {
     background: #E7DFFF;
     color: #CABAFF;
     border-color: #CABAFF;
 }
-
 .card p {
     margin-bottom: 8px;
     font-family: "Gilroy-Semibold", Helvetica;
@@ -122,7 +121,8 @@
 }
 .mainPhoto{
     margin-left: 34px;
-    width: 80%;
+    width:226px;
+    height:228px;
 }
 .card button:hover {
     background-color: #CABAFF;
@@ -161,7 +161,11 @@
 width: 156px;
         height: 274px;
     }
-
+    .mainPhoto{
+        margin-left: 14px;
+        width:136px;
+        height:136px;
+    }
 }
 
 .arrowsContainer {
