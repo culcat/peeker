@@ -33,7 +33,7 @@ export default function SearchBar() {
                 />
             </div>
             <WhereSearch />
-            <MoneySort />
+            {/*<MoneySort />*/}
             <div className={classes.box}>
                 <button className={buttonClasses.button} onClick={handleSearch}>
                     ПОИСК

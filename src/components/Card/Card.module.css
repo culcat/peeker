@@ -2,13 +2,49 @@
 .container {
     width: 80%;
     max-width: 1176px;
-    position: relative; /* Добавляем позиционирование */
+    position: relative;
 
 }
 
-/*.sliderContainer {*/
-/*    overflow: hidden; !* Добавляем overflow для скрытия выхода за границы *!*/
-/*}*/
+@keyframes ellipsis {
+    0% {
+        content: '';
+    }
+    33% {
+        content: '.';
+    }
+    66% {
+        content: '..';
+    }
+    100% {
+        content: '...';
+    }
+}
+
+.loaderText {
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+    font-family: "Despair Display", sans-serif;
+}
+
+.loaderText::after {
+    content: '';
+    animation: ellipsis 1.5s infinite;
+}
+.paginationButton {
+    background-color: transparent;
+    border: 2px solid purple;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin: 0 5px;
+    padding: 10px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
 
 .rating:before{
     content: '★';
@@ -23,12 +59,12 @@
 
 .arrowLeft,
 .arrowRight {
-    width: 40px; /* Задаем ширину стрелочек */
+    width: 40px;
     cursor: pointer;
 }
 
 .arrowLeft {
-    transform: rotate(180deg); /* Поворачиваем левую стрелку */
+    transform: rotate(180deg);
 }
 
 .card {
@@ -45,14 +81,14 @@
 }
 
 .card-content {
-    padding: 0 17px; /* Отступы по бокам */
-    flex-grow: 1; /* Занимать все доступное пространство внутри .card */
+    padding: 0 17px;
+    flex-grow: 1;
 }
 .filterbuttonscontainer {
     overflow-x: hidden;
-    overflow-y: hidden; /* Add this line */
+    overflow-y: hidden;
     margin: 20px 0 20px 17px;
-    -webkit-overflow-scrolling: touch; /* for smooth scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
 }
 
 .filter-buttons {
@@ -74,7 +110,7 @@
     font-weight: 600;
     line-height: 24px;
     cursor: pointer;
-    white-space: nowrap; /* Add this line */
+    white-space: nowrap;
 }
 
 .filterButtons button:hover {
@@ -158,13 +194,13 @@
 }
 @media screen and (max-width: 768px) {
     .card{
-width: 156px;
-        height: 274px;
+width: 206px;
+        height: 304px;
     }
     .mainPhoto{
         margin-left: 14px;
-        width:136px;
-        height:136px;
+        width:90%;
+        height:160px;
     }
 }
 
@@ -181,19 +217,19 @@ width: 156px;
 
 .arrowLeft,
 .arrowRight {
-    width: 40px; /* Задаем ширину стрелочек */
+    width: 40px;
     cursor: pointer;
 }
 
 .arrowRight {
-    transform: rotate(180deg); /* Поворачиваем левую стрелку */
+    transform: rotate(180deg);
 }.arrowLeft {
-     transform: rotate(360deg); /* Поворачиваем левую стрелку */
+     transform: rotate(360deg);
  }
 
  @media screen and (max-width: 768px) {
      .card {
-         min-height: 25em;
+         min-height: 30em;
      }
      .arrowsContainer{
          display: none;
@@ -209,5 +245,8 @@ width: 156px;
      .card button {
          font-size: 12px;
          font-weight: 800;
+     }
+     .container{
+         width: 100%;
      }
  }

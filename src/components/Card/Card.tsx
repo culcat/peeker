@@ -52,9 +52,18 @@ export default function Card() {
     };
 
 
-    if (isLoading || error || !data || !data.items || data.items.length === 0) {
-        return <div>{isLoading ? 'Loading...' : error ? 'Error loading data' : 'No items found'}</div>;
+    if ( isLoading || marketplaceIsLoading) {
+        return (
+            <div className={Clases.loaderText}>
+                Загрузка<span className={Clases.loaderText}></span>
+            </div>
+        );
     }
+
+    if (error || marketplaceError || !data || !data.items || data.items.length === 0) {
+        return <div>{error ? 'Error loading data' : 'No items found'}</div>;
+    }
+
     const items: MainItem[] = data.items;
 
     return (

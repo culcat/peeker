@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useGetProductByNameQuery } from '../../api/popularAPI';
 import { useGetMarketplaceQuery } from "../../api/marketplaceAPI";
@@ -10,7 +10,7 @@ import arrow from '../assets/arrow.svg';
 import NOTfound from '../assets/NotFoundLayoutAdaptive.png';
 import search from '../assets/SearchLayoutAdaptive.png';
 import { useTruncateText } from "../../hooks/useTruncateText";
-import Result from './SearchResult.css';
+import './SearchResult.css';
 import FilterSlider from "../FilterSlider/FilterSlider";
 
 interface SearchResultProps {
@@ -24,7 +24,7 @@ export default function SearchResult({ name }: SearchResultProps) {
     const [filterBy, setFilterBy] = useState<'asc' | 'desc' | null>(null);
     const [filterName, setFilterName] = useState<'rating' | 'buy' | 'price' | null>(null);
 
-    const page = parseInt(paramPage||'1', 10) ;
+    const page = parseInt(paramPage || '1', 10);
     const searchName = name || paramName || '';
 
     const { data, error, isLoading } = useGetProductByNameQuery({ name: searchName, page, filter_by: filterBy, filter_name: filterName });
@@ -59,6 +59,52 @@ export default function SearchResult({ name }: SearchResultProps) {
         trackMouse: true,
     });
 
+    const renderPageNumbers = () => {
+        const pageNumbers = [];
+
+        if (totalPages <= 6) {
+            for (let i = 1; i <= totalPages; i++) {
+                pageNumbers.push(
+                    <span
+                        key={i}
+                        className={`paginationNumber ${i === page ? 'active' : ''}`}
+                        onClick={() => navigate(`/search/${searchName}/${i}`)}
+                    >
+                        {i}
+                    </span>
+                );
+            }
+        } else {
+            for (let i = 1; i <= 5; i++) {
+                pageNumbers.push(
+                    <span
+                        key={i}
+                        className={`paginationNumber ${i === page ? 'active' : ''}`}
+                        onClick={() => navigate(`/search/${searchName}/${i}`)}
+                    >
+                        {i}
+                    </span>
+                );
+            }
+
+            if (page >= 5 && page <= totalPages - 1) {
+                pageNumbers.push(<span key="dots" className="paginationDots">...</span>);
+            }
+
+            pageNumbers.push(
+                <span
+                    key={totalPages}
+                    className={`paginationNumber ${totalPages === page ? 'active' : ''}`}
+                    onClick={() => navigate(`/search/${searchName}/${totalPages}`)}
+                >
+                    {totalPages}
+                </span>
+            );
+        }
+
+        return pageNumbers;
+    };
+
     if (isLoading || marketplaceIsLoading) {
         return (
             <div className={Clases.WarningContainer} >
@@ -78,18 +124,18 @@ export default function SearchResult({ name }: SearchResultProps) {
     return (
         <div className={Clases.container}>
             <div className={Clases.filterbuttonscontainer}>
-            <FilterSlider onFilterChange={handleFilterChange} />
-        </div>
+                <FilterSlider onFilterChange={handleFilterChange}/>
+            </div>
             <div className={Clases.cardConteiner}>
                 {items.map((item) => (
                     <div key={item.item_id} className={Clases.card}>
-                        <img className={Clases.mainPhoto} src={item.picture} alt={item.name} />
+                        <img className={Clases.mainPhoto} src={item.picture} alt={item.name}/>
                         {marketplaceData && marketplaceData.map((market) => {
                             if (item.market === market.id) {
                                 return (
                                     <React.Fragment key={market.id}>
                                         <div className={Clases.market}>
-                                            <img width='30px' height='20px' src={market.icon} alt={market.data} />
+                                            <img width='30px' height='20px' src={market.icon} alt={market.data}/>
                                             <p>{market.data}</p>
                                         </div>
                                     </React.Fragment>
@@ -106,29 +152,21 @@ export default function SearchResult({ name }: SearchResultProps) {
                     </div>
                 ))}
             </div>
-            <div className="pagination-wrapper">
+            <div className="paginationWrapper">
                 <button
                     onClick={handlePreviousPage}
                     disabled={page === 1}
-                    className={Result.paginationbutton}
+                    className="paginationButton"
                 >
                     &lt;
                 </button>
-                <div className="pagination-numbers">
-                    {Array.from({ length: totalPages }, (_, index) => index + 1).map(number => (
-                        <span
-                            key={number}
-                            className={`pagination-number ${number === page ? 'active' : ''}`}
-                            onClick={() => navigate(`/search/${searchName}/${number}`)}
-                        >
-                            {number}
-                        </span>
-                    ))}
+                <div className="paginationNumbers">
+                    {renderPageNumbers()}
                 </div>
                 <button
                     onClick={handleNextPage}
                     disabled={page === totalPages}
-                    className={Result.paginationbutton}
+                    className="paginationButton"
                 >
                     &gt;
                 </button>

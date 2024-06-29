@@ -1,29 +1,41 @@
+body {
+    font-family: "Gilroy", Helvetica, sans-serif;
+}
+
 .marketplaces {
     background-color: #ffffff;
     border-radius: 22px;
-    height: auto; /* Используем автоматическую высоту */
+    height: auto;
     position: relative;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .text-wrapper {
-    color: black;
-    font-family: "Gilroy", Helvetica;
+    color: #2a2f33;
+    font-family: "Gilroy", Helvetica, serif;
     font-size: 20px;
     font-weight: 600;
     line-height: normal;
     text-align: center;
-    margin: 10px;
+    margin: 10px 0;
 }
 
 .title {
-    text-align: center; /* Центрируем текст */
-    margin-bottom: 20px; /* Добавляем отступ снизу */
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 700;
 }
 
 .SEARCH {
-    margin-bottom: 20px; /* Добавляем отступ снизу */
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
-
 
 .overlap-group {
     background-color: #ffffff;
@@ -31,25 +43,22 @@
     border-radius: 10px;
     padding: 0.7em;
     margin-bottom: 1.3em;
-    margin-left: 10%;
-    margin-right: 10%;
     font-family: "Gilroy", Helvetica;
     font-size: 16px;
     font-weight: 600;
     color: #9e9c9f;
     width: 100%;
     height: 60px;
-    width: 100%;
 }
 
-.overlap-group::placeholder{
+.overlap-group::placeholder {
     background-image: url("../assets/Search.svg");
     background-repeat: no-repeat;
     height: 50px;
     font-family: "Gilroy-Semibold", Helvetica;
     font-weight: 600;
-    color:#9E9C9F;
-    text-size: 16px;
+    color: #9E9C9F;
+    font-size: 16px;
     padding-left: 30px;
     padding-top: 3px;
 }
@@ -61,20 +70,9 @@
     font-weight: 600;
     white-space: nowrap;
 }
-.SEARCH {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.ym,
-.megamarket,
-.ozon,
-.wb,
-.frame,
-.view
-{
-    margin-bottom: 1.2em; /* Добавляем отступ снизу */
+
+.ym, .megamarket, .ozon, .wb, .frame, .view {
+    margin-bottom: 1.2em;
     display: flex;
     flex-flow: row wrap;
     row-gap: 3em;
@@ -83,33 +81,29 @@
     justify-content: center;
 }
 
-
-.text-wrapper-2{
+.text-wrapper-2 {
     font-family: "Despair Display", sans-serif;
     font-size: 32px;
     font-weight: 600;
 }
-.text-wrapper-4,
-.text-wrapper-5,
-.text-wrapper-6 {
+
+.text-wrapper-4, .text-wrapper-5, .text-wrapper-6 {
     font-family: "Gilroy", Helvetica;
     font-size: 1.5em;
     font-weight: 600;
 }
-.text-wrapper-5{
+
+.text-wrapper-5 {
     color: #9e9c9f;
     text-align: center;
 }
 
-.yandex-market,
-
-.frame {
-
+.yandex-market, .frame {
     width: 122px;
     height: 22px;
 }
 
-.checkboxes-instance{
+.checkboxes-instance {
     width: 24px;
     height: 24px;
     margin-right: 20px;
@@ -119,31 +113,30 @@
     -moz-appearance: none;
     appearance: none;
 }
-.checkboxes-instance:checked{
+
+.checkboxes-instance:checked {
     background: #8338EC;
 }
-.close-button{
+
+.close-button {
     color: #9e9c9f;
     font-family: "Gilroy", Helvetica;
     display: grid;
-
 }
 
 .find {
-    text-align: center; /* Центрируем текст */
-    padding: 10px 20px; /* Добавляем отступы вокруг текста */
+    text-align: center;
+    padding: 10px 20px;
     background-color: #2a2f33;
     color: #ffffff;
     border-radius: 10px;
 }
 
-.all{
+.all {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
-
-
 }
 
 .close-button:hover {
@@ -160,38 +153,170 @@
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    max-width: 90%; /* Максимальная ширина для адаптации */
+    max-width: 90%;
     max-height: 90%;
 }
+
 .overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.25); /* Черный полупрозрачный фон */
-    z-index: 999; /* Больше чем у самого попапа, чтобы закрывать всю область */
+    background-color: rgba(0, 0, 0, 0.25);
+    z-index: 999;
 }
 
-@media screen and(max-width: 768px ) {
-    .yandex-market,
+@media screen and (max-width: 1200px) {
+    .overlap-group {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
 
-    .frame {
-
-        width: 24px;
-        height: 24px;
+@media screen and (max-width: 800px) {
+    .popup-container {
+        min-width: 80%;
     }
-    .close-button{
-        display: none;
+    .text-wrapper {
+        font-size: 18px;
     }
-    .text-wrapper-2{
-        font-size:20px;
+    .text-wrapper-2 {
+        font-size: 24px;
     }
-    .text-wrapper-3{
+    .text-wrapper-3, .text-wrapper-4, .text-wrapper-5, .text-wrapper-6 {
         font-size: 14px;
     }
-    .popup-container{
-        width: 80%;
-        max-width: 500px;
+    .overlap-group {
+        padding: 0.5em;
+        font-size: 14px;
+    }
+    .ym, .megamarket, .ozon, .wb, .frame, .view {
+        column-gap: 10em;
+    }
+    .yandex-market, .frame {
+        width: 100px;
+        height: 18px;
+    }
+    .find {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .text-wrapper {
+        font-size: 16px;
+    }
+    .text-wrapper-2 {
+        font-size: 20px;
+    }
+    .text-wrapper-3, .text-wrapper-4, .text-wrapper-5, .text-wrapper-6 {
+        font-size: 12px;
+    }
+    .overlap-group {
+        padding: 0.3em;
+        font-size: 12px;
+    }
+    .ym, .megamarket, .ozon, .wb, .frame, .view {
+        column-gap: 5em;
+    }
+    .yandex-market, .frame {
+        width: 80px;
+        height: 14px;
+    }
+    .find {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    .checkboxes-instance {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .popup-container {
+        min-width: 90%;
+        padding: 10px;
+    }
+    .text-wrapper {
+        font-size: 14px;
+    }
+    .text-wrapper-2 {
+        font-size: 18px;
+    }
+    .text-wrapper-3, .text-wrapper-4, .text-wrapper-5, .text-wrapper-6 {
+        font-size: 10px;
+    }
+    .overlap-group {
+        padding: 0.2em;
+        font-size: 10px;
+    }
+    .ym, .megamarket, .ozon, .wb, .frame, .view {
+        column-gap: 2em;
+    }
+    .yandex-market, .frame {
+        width: 60px;
+        height: 12px;
+    }
+    .find {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+    .checkboxes-instance {
+        width: 18px;
+        height: 18px;
+        margin-right: 8px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .marketplaces {
+        padding: 20px;
+        max-width: 90%;
+        margin: 0 auto;
+        border-radius: 16px;
+    }
+
+    .title {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .text-wrapper {
+        font-size: 16px;
+        margin: 5px 0;
+    }
+
+    .overlap-group {
+        border-radius: 8px;
+        padding: 10px;
+        font-size: 14px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .overlap-group::placeholder {
+        font-size: 14px;
+        padding-left: 20px;
+    }
+
+    .checkboxes-instance {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+
+    .find {
+        padding: 8px 16px;
+        font-size: 14px;
+        border-radius: 8px;
+    }
+
+    .yandex-market, .frame {
+        width: 80px;
+        height: 14px;
     }
 }

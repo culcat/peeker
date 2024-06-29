@@ -4,6 +4,7 @@ import classes from "./WhereWeSearch.module.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Clases from "../Card/Card.module.css";
 
 export default function WhereWeSearch() {
     const { data, isLoading, error } = useGetMarketplaceQuery();
@@ -33,7 +34,13 @@ export default function WhereWeSearch() {
             window.removeEventListener("resize", handleResize);
         };
     }, []);
-    if (isLoading) return <div>Loading...</div>;
+    if (isLoading ) {
+        return (
+            <div className={Clases.loaderText}>
+                Загрузка<span className={Clases.loaderText}></span>
+            </div>
+        );
+    }
     if (error) return <div>Error</div>;
 
 
